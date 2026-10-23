@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miel FAMA®</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* -------------------------------------------------------------
+           1. CARGA DE TIPOGRAFÍA PROPIA (BST Symbol)
+           Asegúrate de colocar el archivo de la fuente en la misma carpeta
+        ---------------------------------------------------------------- */
+        @font-face {
+            font-family: 'BST Symbol';
+            src: url('BSTSymbol.woff2') format('woff2'),
+                 url('BSTSymbol.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* -------------------------------------------------------------
+           2. ESTILOS GENERALES
+        ---------------------------------------------------------------- */
+        body {
+            background-color: #F8E8A3; /* Color exacto del fondo pastel */
+            font-family: 'BST Symbol', system-ui, -apple-system, sans-serif;
+            color: #000000;
+        }
+
+        /* Aplicación general de la fuente de la marca */
+        .font-brand {
+            font-family: 'BST Symbol', sans-serif;
+        }
+
+        /* Rotación continua para el círculo naranja */
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin-slow {
+            animation: spin-slow 14s linear infinite;
+        }
+
+        /* Transiciones suaves interactiva */
+        .badge-button {
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .badge-button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.03);
+        }
+        .badge-button:active {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center text-center p-6 sm:p-10 select-none">
+
+    <!-- SECCIÓN SUPERIOR: Marca & Logo -->
+    <header class="pt-8 sm:pt-12 flex flex-col items-center">
+        <!-- Texto "Miel" arriba con la tipografía de marca -->
+        <span class="text-2xl sm:text-3xl font-brand tracking-wide text-black mb-2">Miel</span>
+        
+        <!-- Logo principal FAMA con el símbolo ® -->
+        <div class="relative flex items-center justify-center">
+            <!-- Si tu archivo es .svg cámbialo por logo.svg en el 'src' -->
+            <img src="logo.png" 
+                 alt="FAMA" 
+                 class="h-16 sm:h-24 w-auto object-contain max-w-[280px] sm:max-w-[360px]"
+                 onerror="this.onerror=null; this.outerHTML='<h1 class=\'text-6xl font-bold font-brand tracking-wider\'>FAMA</h1>';">
+            
+            <!-- Símbolo de Marca Registrada (®) -->
+            <span class="text-xs sm:text-sm font-brand font-bold border border-black rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center ml-1 self-end mb-1">R</span>
+        </div>
+    </header>
+
+    <!-- SECCIÓN CENTRAL: Círculo Naranja Giratorio para WhatsApp -->
+    <main class="my-auto py-8">
+        <!-- Reemplazada la URL de WhatsApp con el número exacto y mensaje personalizado -->
+        <a href="https://wa.me/5493816156617?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20de%20Miel%20Fama." 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           aria-label="Hacé tu pedido por WhatsApp"
+           class="badge-button block relative w-56 h-56 sm:w-64 sm:h-64 mx-auto rounded-full cursor-pointer focus:outline-none">
+            
+            <svg class="w-full h-full animate-spin-slow drop-shadow-sm" viewBox="0 0 200 200">
+                <!-- Círculo Naranja de Fondo -->
+                <circle cx="100" cy="100" r="90" fill="#FAA732" />
+                
+                <!-- Guía circular invisible donde camina el texto -->
+                <path id="textPath" 
+                      d="M 100,100 m -62,0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0" 
+                      fill="none" />
+                
+                <!-- Texto giratorio configurado con BST Symbol -->
+                <text font-family="'BST Symbol', sans-serif" font-size="16" font-weight="bold" fill="#000000" letter-spacing="1">
+                    <textPath href="#textPath" startOffset="0%" textLength="389" lengthAdjust="spacing">
+                        Hacé tu pedido por Whatsapp • 
+                    </textPath>
+                </text>
+            </svg>
+        </a>
+    </main>
+
+    <!-- SECCIÓN INFERIOR: Textos e Instagram -->
+    <footer class="pb-8 sm:pb-12 max-w-lg mx-auto flex flex-col gap-6 font-brand">
+        <p class="text-xl sm:text-2xl font-bold leading-snug tracking-tight text-black">
+            Estamos construyendo nuestra<br>tienda online.
+        </p>
+
+        <div class="flex flex-col gap-1">
+            <p class="text-lg sm:text-xl font-bold leading-snug text-black">
+                Mientras, seguinos en instagram<br>para enterarte de todo!
+            </p>
+            <a href="https://www.instagram.com/fama.ar" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="text-xl sm:text-2xl font-bold text-black underline decoration-2 underline-offset-4 hover:opacity-75 transition-opacity mt-1">
+                @fama.ar
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
